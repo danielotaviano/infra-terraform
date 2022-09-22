@@ -43,9 +43,17 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
 
   key_name = "aws-terraform"
+  # user_data = <<-EOF
+  #                #!/bin/bash
+  #                cd /home/ubuntu
+  #                touch index.html
+  #                sudo apt install apache2 -y
+  #                echo "<h1>Fala Galera</h1>" > index.html
+  #                nohup busybox httpd -f -p 8080 &
+  #                EOF
 
   tags = {
-    Name = "Primeira Instancia"
+    Name = "web server"
   }
 
   vpc_security_group_ids = [
